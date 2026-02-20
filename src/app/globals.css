@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  /* Portfolio design palette */
+  --brown-dark: #4a3428;
+  --brown-medium: #5c4033;
+  --brown-light: #8b7355;
+  --brown-stripe-1: #6b5344;
+  --brown-stripe-2: #5c4033;
+  --brown-stripe-3: #4a3428;
+  --sage-green: #9ca88b;
+  --mustard: #c9a227;
+  --dark-blue: #2c3e50;
+  --grey-dark: #2d2d2d;
+  --grey-card: #e8e4e0;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-lora);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
