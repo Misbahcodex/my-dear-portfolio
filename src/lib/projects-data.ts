@@ -39,4 +39,12 @@ export const projects = [
     codeUrl: null,
     image: "/silkstitch.png",
   },
+  {
+    title: "Arkad",
+    description:
+      "AI Data Analyst platform for intelligent data analysis and insights.",
+    liveUrl: "https://arkad-beta.vercel.app",
+    codeUrl: null,
+    image: "/arkad.png",
+  },
 ];
