@@ -33,7 +33,7 @@ export default function HeroSection() {
           {/* Headline - flex layout: stacks on mobile, side-by-side on desktop */}
           <div className="flex-1 text-center lg:text-left min-w-0 w-full animate-hero-in opacity-0 stagger-2">
             <h1 className="font-[family-name:var(--font-lora)] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-[#4a3428] leading-tight mb-4 lg:mb-6">
-              Frontend Developer crafting sleek, scalable, and high-performance web experiences.
+              Full-Stack Developer crafting sleek, scalable, and high-performance web experiences.
             </h1>
             <p className="font-[family-name:var(--font-lora)] text-base sm:text-lg md:text-xl text-[#5c4033] max-w-2xl mx-auto lg:mx-0">
               Highly responsive applications using React, Next.js and TypeScript. Focused on UI perfection and performance.
