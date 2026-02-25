@@ -3,14 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import AnimateInView from "./AnimateInView";
 import { projects } from "@/lib/projects-data";
+import Navbar from "@/components/Navbar";
 
 function ProjectCard({ project }: { project: (typeof projects)[0] }) {
   const [imgError, setImgError] = useState(false);
 
   return (
-    <div className="flex-shrink-0 w-[320px] sm:w-[360px] bg-[#e8e4e0] rounded-lg overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-200">
+    <div className="bg-[#e8e4e0] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200">
       <div className="relative h-48 bg-[#d4cfc9] overflow-hidden">
         {!imgError ? (
           <Image
@@ -30,9 +30,7 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
         <h3 className="text-xl font-semibold text-[#4a3428] mb-2">
           {project.title}
         </h3>
-        <p className="text-[#5c4033] text-sm mb-4 line-clamp-2">
-          {project.description}
-        </p>
+        <p className="text-[#5c4033] text-sm mb-4">{project.description}</p>
         <div className="flex gap-3 flex-wrap">
           <a
             href={project.liveUrl}
@@ -56,45 +54,41 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
   );
 }
 
-export default function ProjectsSection() {
+export default function ProjectsPage() {
   return (
-    <section
-      id="projects"
-      className="relative py-20    overflow-x-hidden"
-      style={{
-        backgroundImage: "url(/skills-bg.svg)",
-        backgroundRepeat: "repeat",
-        backgroundColor: "#5a4a3e",
-      }}
-    >
-      <div className="w-full mx-auto min-w-0">
-        <AnimateInView variant="fadeUp">
-          <h2 className="text-4xl text-center md:text-5xl font-bold text-white mb-16">
-            Projects
-          </h2>
-        </AnimateInView>
+    <div className="min-h-screen overflow-x-hidden">
+      <Navbar />
+      <div className="pt-24">
+        <main
+          className="py-20 px-4 sm:px-6 md:px-12 lg:px-24"
+          style={{
+            backgroundImage: "url(/skills-bg.svg)",
+            backgroundRepeat: "repeat",
+            backgroundColor: "#5a4a3e",
+            minHeight: "calc(100vh - 4rem)",
+          }}
+        >
+          <div className="max-w-7xl mx-auto">
+            <div className="flex items-center justify-between mb-16">
+              <h1 className="text-4xl md:text-5xl font-bold text-white">
+                All Projects
+              </h1>
+              <Link
+                href="/"
+                className="px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-lg font-medium transition-colors"
+              >
+                ← Back to Home
+              </Link>
+            </div>
 
-        {/* Marquee - project cards moving in a line */}
-        <div className="relative w-full overflow-hidden group px-4 sm:px-6 md:px-12 lg:px-24">
-          <div
-            className="inline-flex w-max gap-6 py-2 will-change-transform group-hover:[animation-play-state:paused]"
-            style={{ animation: "marqueeProjects 40s linear infinite" }}
-          >
-            {[...projects, ...projects].map((project, index) => (
-              <ProjectCard key={index} project={project} />
-            ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {projects.map((project, index) => (
+                <ProjectCard key={index} project={project} />
+              ))}
+            </div>
           </div>
-        </div>
-
-        <div className="flex justify-center mt-12 px-4 sm:px-6 md:px-12 lg:px-24">
-          <Link
-            href="/projects"
-            className="px-8 py-3 bg-white text-[#4a3428] font-semibold rounded-full hover:bg-[#e8e4e0] transition-colors shadow-lg"
-          >
-            View All Projects
-          </Link>
-        </div>
+        </main>
       </div>
-    </section>
+    </div>
   );
 }

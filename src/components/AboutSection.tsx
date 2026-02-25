@@ -1,74 +1,56 @@
 "use client";
 
+import AnimateInView from "./AnimateInView";
+
 export default function AboutSection() {
   const skills = [
-    { title: "Frontend", items: ["React.js", "Next.js", "Tailwind CSS"] },
-    { title: "Backend", items: ["Supabase", "REST APIs", "Auth"] },
-    { title: "Languages", items: ["JavaScript", "TypeScript", "HTML5/CSS3"] },
-    { title: "Tools", items: ["Git & GitHub", "Figma", "Vercel"] },
-    { title: "Architecture", items: ["Clean Code", "Scalable Structure"] },
-    { title: "Deployment", items: ["Production Config", "Env Variables"] },
+    { title: "Frontend", items: ["React.js", "Next.js", "Tailwind CSS", "Bootstrap", "JavaScript (ES6+)", "HTML5, CSS3, SCSS", "Responsive UI Design", "Component-based architecture", "Performance optimization", "Animations & UI polish", "Next.js (App Router & Pages Router)"], cardClass: "from-emerald-500/20 to-teal-500/20 border-emerald-400/30" },
+    { title: "Backend", items: ["Supabase (Auth, Database, Storage)", "REST APIs", "Auth", "Basic backend integration (tRPC / API routes)", "Authentication flows", "Environment variables & production configs"], cardClass: "from-indigo-500/20 to-violet-500/20 border-indigo-400/30" },
+    { title: "Tools", items: ["Git & GitHub", "Vercel deployment", "Figma → UI Implementation", "Debugging & performance tuning", "Clean code & folder structuring", "Agile-style feature iteration"], cardClass: "from-rose-500/20 to-pink-500/20 border-rose-400/30" },
   ];
 
   return (
-    <section id="about" className="relative bg-[#5c4033] py-20 px-6 md:px-12 lg:px-24 overflow-hidden">
-      {/* Striped background pattern */}
-      <div
-        className="absolute inset-0 opacity-60"
-        style={{
-          backgroundImage: `repeating-linear-gradient(
-            90deg,
-            transparent,
-            transparent 40px,
-            rgba(74, 52, 40, 0.3) 40px,
-            rgba(74, 52, 40, 0.3) 41px
-          ),
-          repeating-linear-gradient(
-            90deg,
-            transparent,
-            transparent 80px,
-            rgba(107, 83, 68, 0.2) 80px,
-            rgba(107, 83, 68, 0.2) 81px
-          )`,
-          backgroundColor: "#6b5344",
-        }}
-      />
+    <section id="about" className="bg-[#2d2d2d] py-20 px-4 sm:px-6 md:px-12 lg:px-24 overflow-x-hidden">
+      <div className="relative max-w-7xl mx-auto pt-16 min-w-0">
+        <AnimateInView variant="fadeUp">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-16">
+            About Me
+          </h2>
+        </AnimateInView>
 
-      <div className="relative max-w-7xl mx-auto">
-        {/* Dark blue decorative square */}
-        <div className="relative mb-12">
-          <div className="absolute -top-2 -left-2 w-4 h-4 rounded-full bg-white/90 z-10" />
-          <div className="w-24 h-24 md:w-32 md:h-32 bg-[#2c3e50] rotate-12 rounded-sm" />
-        </div>
+        {/* Professional summary - redesigned card */}
+        <AnimateInView variant="fadeUp" delay={100} className="max-full mb-16">
+          <div className=" p-8 ">
+            <p className="font-[family-name:var(--font-lora)] text-lg md:text-xl text-slate-100 leading-relaxed">
+              I&apos;m a Full-Stack Web Developer who builds complete, production-ready web applications — from polished frontend interfaces to reliable backend integrations and deployments. I specialize in crafting modern, responsive user experiences using React, Next.js, and Tailwind CSS, while also handling authentication, APIs, databases, and environment configuration on the backend.
+            </p>
+            <p className="font-[family-name:var(--font-lora)] text-lg md:text-xl text-slate-200/90 leading-relaxed mt-6">
+              I&apos;ve worked on real-world products in fintech and business domains, shipping features used by real users. I enjoy taking projects from idea → design → development → deployment, owning the full lifecycle. I care deeply about clean architecture, performance, and scalability, and I&apos;m constantly improving how I structure code, manage state, and integrate services.
+            </p>
+          </div>
+        </AnimateInView>
 
-        {/* Professional summary text */}
-        <div className="max-w-4xl mb-16">
-          <p className="font-[family-name:var(--font-lora)] text-lg md:text-xl text-white/95 leading-relaxed">
-            I&apos;m a Full-Stack Web Developer who builds complete, production-ready web applications — from polished frontend interfaces to reliable backend integrations and deployments. I specialize in crafting modern, responsive user experiences using React, Next.js, and Tailwind CSS, while also handling authentication, APIs, databases, and environment configuration on the backend.
-          </p>
-          <p className="font-[family-name:var(--font-lora)] text-lg md:text-xl text-white/95 leading-relaxed mt-6">
-            I&apos;ve worked on real-world products in fintech and business domains, shipping features used by real users. I enjoy taking projects from idea → design → development → deployment, owning the full lifecycle. I care deeply about clean architecture, performance, and scalability, and I&apos;m constantly improving how I structure code, manage state, and integrate services.
-          </p>
-        </div>
-
-        {/* Skill boxes */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        {/* Skill cards - redesigned with animations */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
           {skills.map((skill, index) => (
-            <div
+            <AnimateInView
               key={index}
-              className="bg-white/95 rounded-lg p-6 shadow-lg border border-white/50 hover:shadow-xl transition-shadow"
+              variant="scale"
+              delay={150 + index * 80}
+              className={`bg-gradient-to-br ${skill.cardClass} backdrop-blur-sm rounded-2xl p-6 border shadow-lg hover:scale-[1.03] hover:shadow-xl transition-all duration-300`}
             >
-              <h3 className="font-semibold text-[#4a3428] text-lg mb-3">
+              <h3 className="font-bold text-white text-lg flex justify-center mb-4 flex items-center gap-2">
                 {skill.title}
               </h3>
-              <ul className="space-y-1 text-[#5c4033]">
+              <ul className="space-y-2 ">
                 {skill.items.map((item, i) => (
-                  <li key={i} className="text-sm md:text-base">
-                    • {item}
+                  <li key={i} className="text-gray-100 text-sm md:text-base flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-slate-500 flex-shrink-0" />
+                    {item}
                   </li>
                 ))}
               </ul>
-            </div>
+            </AnimateInView>
           ))}
         </div>
       </div>
